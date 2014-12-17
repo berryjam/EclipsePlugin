@@ -1,16 +1,14 @@
 package com.homework.plugin.first.handlers;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
-
-import javax.swing.JFrame;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.handlers.HandlerUtil;
 
-import com.homework.ui.GUI;
+import com.homework.showfunctionclassinfo.Delegation;
 
 /**
  * Our sample handler extends AbstractHandler, an IHandler base class.
@@ -34,12 +32,14 @@ public class SampleHandler extends AbstractHandler {
 
 		Process process = null;
 		try {
-			// process = Runtime.getRuntime().exec("chmod 777 " + path +
-			// "gui.py");
-			// process.waitFor();
+			process = Runtime.getRuntime().exec("chmod 777 " + path + "gui.py");
 			process = Runtime.getRuntime().exec("python " + path + "gui.py");
 			Thread.sleep(20000);
-			// GUI.show();
+			BufferedReader br = new BufferedReader(new FileReader(new File(path
+					+ "type.txt")));
+			int type = Integer.parseInt(br.readLine());
+			Delegation.run(type);
+			br.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,6 +47,7 @@ public class SampleHandler extends AbstractHandler {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 		return null;
 	}
 }

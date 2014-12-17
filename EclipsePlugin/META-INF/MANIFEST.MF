@@ -3,9 +3,13 @@ Bundle-ManifestVersion: 2
 Bundle-Name: First
 Bundle-SymbolicName: EclipsePlugin;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-Activator: com.homework.plugin.first.Activator
+Bundle-Activator: com.homework.plugin.first.activator.Activator
 Bundle-Vendor: VOGELLA
 Require-Bundle: org.eclipse.ui,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.eclipse.ui.ide;bundle-version="3.10.1",
+ org.eclipse.core.resources;bundle-version="3.9.1",
+ org.eclipse.ui.editors;bundle-version="3.8.200",
+ org.eclipse.jface.text;bundle-version="3.9.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
